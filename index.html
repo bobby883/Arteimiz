@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Toko Kaos Artemiz</h1>
+{% for b in stok_barang %}
+<form method="POST">
+  <p>{{ b.nama }} - Rp{{ b.harga }} - Stok: {{ b.stok }}
+  <input type="hidden" name="nama_baju" value="{{ b.nama }}">
+  <input type="number" name="jumlah" value="1" min="1">
+  <button type="submit">Beli</button>
+  </p>
+</form>
+{% endfor %}
+<hr>
+<h3>Keranjang ({{ keranjang|length }}) - Total: Rp{{ total }}</h3>
+{% for k in keranjang %}
+<p>{{ k.nama }} x{{ k.jumlah }} = Rp{{ k.harga * k.jumlah }}</p>
+{% endfor %}
+</body>
+</html>
